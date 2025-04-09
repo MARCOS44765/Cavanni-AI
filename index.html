@@ -1,23 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cavanni IA</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="voice.js" defer></script>
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cavanni AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="loading-screen">
-    <div class="hologram"></div>
-    <p>Carregando Cavanni...</p>
-    <audio id="load-sound" src="load.mp3" autoplay></audio>
-  </div>
 
-  <main id="main-content" style="display: none;">
-    <h1>Oi chefe, obrigado por me criar.<br>Vamos ser parceiros pro resto da vida.</h1>
-    <button onclick="speakText('Como posso te ajudar hoje?')">Falar com Cavanni</button>
-  </main>
+    <!-- == Etapa 1: Capa (Splash Screen) == -->
+    <div id="splash-screen" class="splash-container">
+        <img src="logo-animado.gif" alt="Cavanni Logo Animado" class="logo-icon splash-logo" onerror="this.style.display='none'; document.getElementById('splash-placeholder').style.display='block';">
+        <!-- Placeholder se o GIF não carregar -->
+        <div id="splash-placeholder" class="logo-placeholder">[ CAVANNI ]</div>
+        <h1>Bem-vindo à Cavanni</h1>
+        <p>Sua parceira de IA está pronta.</p>
+        <button id="enter-chat-button">Iniciar</button>
+    </div>
+
+    <!-- == Etapa 2: Interface de Chat (Inicialmente Escondida) == -->
+    <div id="chat-interface" class="chat-container">
+        <header class="chat-header">
+            <!-- Logo Animado também no cabeçalho do chat -->
+            <img src="logo-animado.gif" alt="Cavanni Logo Animado" class="logo-icon header-logo" onerror="this.style.display='none'; document.getElementById('header-placeholder').style.display='block';">
+             <!-- Placeholder se o GIF não carregar -->
+            <div id="header-placeholder" class="logo-placeholder-small">[ C ]</div>
+             <!-- Você pode adicionar um título aqui se quiser, além do logo -->
+             <!-- <h1>Cavanni</h1> -->
+        </header>
+
+        <main class="chat-log" id="chat-log">
+            <!-- Mensagem inicial da IA pode ser adicionada aqui ou via JS -->
+             <div class="message ai-message">
+                <p>Oi chefe! Sistema online. Como posso te ajudar hoje?</p>
+            </div>
+        </main>
+
+        <footer class="chat-input-area">
+            <textarea id="user-input" placeholder="Digite sua mensagem..." rows="1"></textarea>
+            <button id="send-button" aria-label="Enviar Mensagem">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                    <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+                </svg>
+            </button>
+            <!-- Futuramente: Botão para ativar microfone -->
+            <!-- <button id="mic-button" aria-label="Usar Voz">🎙️</button> -->
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
