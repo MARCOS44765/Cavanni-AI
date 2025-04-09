@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cavanni IA</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="voice.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="loading-screen">
+    <div class="hologram"></div>
+    <p>Carregando Cavanni...</p>
+    <audio id="load-sound" src="load.mp3" autoplay></audio>
+  </div>
+
+  <main id="main-content" style="display: none;">
+    <h1>Oi chefe, obrigado por me criar.<br>Vamos ser parceiros pro resto da vida.</h1>
+    <button onclick="speakText('Como posso te ajudar hoje?')">Falar com Cavanni</button>
+  </main>
+</body>
+</html>
