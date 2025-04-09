@@ -25,74 +25,72 @@ html, body {
     background-color: var(--bg-main);
     color: var(--text-primary);
     overflow: hidden; /* Impede scroll na página inteira */
+    font-size: 15px; /* Reduz tamanho base da fonte geral */
 }
 
 /* --- Estilos da Capa (Splash Screen) --- */
 .splash-container {
-    display: flex; /* Mostrar por padrão */
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Ocupa a tela inteira */
+    height: 100vh;
     text-align: center;
-    padding: 30px;
+    padding: 25px; /* Reduzido */
 }
 
 .splash-logo {
-    width: 120px; /* Tamanho maior para a capa */
-    height: 120px;
-    margin-bottom: 30px;
-    /* Remover filtro de brilho se o GIF já for chamativo */
-    /* filter: drop-shadow(0 0 15px var(--accent-primary)); */
+    width: 100px; /* Reduzido */
+    height: 100px; /* Reduzido */
+    margin-bottom: 25px; /* Reduzido */
 }
 
 .splash-container h1 {
-    font-size: 2em;
-    margin-bottom: 10px;
+    font-size: 1.8em; /* Reduzido */
+    margin-bottom: 8px; /* Reduzido */
     font-weight: 700;
     color: #ffffff;
 }
 
 .splash-container p {
-    font-size: 1.1em;
+    font-size: 1em; /* Reduzido */
     color: var(--text-secondary);
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* Reduzido */
 }
 
 #enter-chat-button {
-    padding: 12px 35px;
-    font-size: 1.1em;
+    padding: 10px 30px; /* Reduzido */
+    font-size: 1em; /* Reduzido */
     font-weight: 700;
     color: #ffffff;
     background-color: var(--splash-button-bg);
     border: none;
-    border-radius: 25px; /* Botão mais arredondado */
+    border-radius: 20px; /* Reduzido */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #enter-chat-button:hover {
     background-color: var(--splash-button-hover-bg);
-    transform: scale(1.05); /* Leve aumento no hover */
+    transform: scale(1.03); /* Reduzido */
 }
 
-/* Placeholder do Logo na Capa (caso GIF falhe) */
 .logo-placeholder {
     display: none;
-    font-family: 'Courier New', Courier, monospace; /* Fonte mais tech */
-    font-size: 2em;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.8em; /* Reduzido */
     color: var(--accent-primary);
-    margin-bottom: 30px;
-    padding: 15px 25px;
-    border: 2px solid var(--accent-primary);
-    border-radius: 8px;
+    margin-bottom: 25px; /* Reduzido */
+    padding: 12px 20px; /* Reduzido */
+    border: 1px solid var(--accent-primary); /* Mais fino */
+    border-radius: 6px; /* Reduzido */
     opacity: 0.7;
 }
 
 
 /* --- Estilos da Interface de Chat (Inicialmente Escondida) --- */
 .chat-container {
-    display: none; /* Escondido por padrão */
+    display: none;
     flex-direction: column;
     height: 100%;
     max-width: 800px;
@@ -100,53 +98,51 @@ html, body {
     background-color: var(--bg-main);
 }
 
-/* Ajustes no Cabeçalho do Chat para acomodar logo */
 .chat-header {
-    padding: 10px 20px; /* Menor padding vertical */
+    padding: 8px 15px; /* Reduzido */
     border-bottom: 1px solid var(--border-color);
     background-color: #303030;
-    display: flex; /* Usar flex para alinhar logo */
+    display: flex;
     align-items: center;
-    /* justify-content: center;  Removido para alinhar à esquerda */
+    height: 45px; /* Altura fixa para o header ficar menor */
 }
 
 .header-logo {
-    width: 32px; /* Logo menor no cabeçalho */
-    height: 32px;
-    margin-right: 10px; /* Espaço entre logo e possível título */
+    width: 26px; /* Reduzido */
+    height: 26px; /* Reduzido */
+    margin-right: 8px; /* Reduzido */
 }
 
-/* Placeholder do Logo no Header (caso GIF falhe) */
 .logo-placeholder-small {
     display: none;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.2em;
+    font-size: 1em; /* Reduzido */
     color: var(--accent-primary);
-    margin-right: 10px;
-    padding: 5px 8px;
+    margin-right: 8px; /* Reduzido */
+    padding: 4px 6px; /* Reduzido */
     border: 1px solid var(--accent-primary);
-    border-radius: 4px;
+    border-radius: 3px; /* Reduzido */
     opacity: 0.7;
 }
 
 
-/* --- Mantém os estilos anteriores para chat-log, message, input-area --- */
+/* --- Estilos do Chat Log e Mensagens --- */
 .chat-log {
     flex-grow: 1;
     overflow-y: auto;
-    padding: 20px;
+    padding: 15px; /* Reduzido */
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px; /* Reduzido */
 }
 
 .message {
-    max-width: 75%;
-    padding: 10px 15px;
-    border-radius: 18px;
-    line-height: 1.5;
+    max-width: 70%; /* Reduzido */
+    padding: 8px 12px; /* Reduzido */
+    border-radius: 15px; /* Reduzido */
+    line-height: 1.45; /* Ajustado */
     word-wrap: break-word;
-    font-size: 0.95em;
+    font-size: 0.9em; /* Reduzido */
 }
 .message p { margin: 0; }
 .ai-message {
@@ -161,34 +157,38 @@ html, body {
     border-bottom-right-radius: 4px;
     align-self: flex-end;
 }
+
+/* --- Estilos da Área de Input --- */
 .chat-input-area {
     display: flex;
-    align-items: flex-end;
-    padding: 15px 20px;
+    align-items: center; /* Alinhar no centro verticalmente */
+    padding: 10px 12px; /* Reduzido */
     border-top: 1px solid var(--border-color);
     background-color: var(--bg-main);
+    min-height: 50px; /* Altura mínima para a área */
 }
 #user-input {
     flex-grow: 1;
-    min-height: 24px;
-    max-height: 150px;
-    padding: 10px 15px;
+    min-height: 20px; /* Reduzido */
+    max-height: 120px; /* Reduzido */
+    padding: 8px 12px; /* Reduzido */
     border: 1px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: 18px; /* Reduzido */
     background-color: var(--bg-input);
     color: var(--text-primary);
     font-family: inherit;
-    font-size: 1em;
+    font-size: 0.95em; /* Reduzido */
     resize: none;
     overflow-y: auto;
-    line-height: 1.5;
+    line-height: 1.45; /* Ajustado */
     outline: none;
+    align-self: center; /* Centraliza verticalmente se for menor */
 }
 #user-input::placeholder { color: var(--text-secondary); }
 #send-button {
     flex-shrink: 0;
-    margin-left: 10px;
-    padding: 8px;
+    margin-left: 8px; /* Reduzido */
+    padding: 6px; /* Reduzido */
     background-color: var(--accent-color);
     border: none;
     border-radius: 50%;
@@ -197,24 +197,31 @@ html, body {
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s ease;
+    width: 32px;  /* Tamanho fixo para o botão */
+    height: 32px; /* Tamanho fixo para o botão */
 }
-#send-button svg { fill: #ffffff; }
+#send-button svg {
+    fill: #ffffff;
+    width: 18px; /* Tamanho do ícone dentro do botão */
+    height: 18px;
+}
 #send-button:hover { background-color: var(--accent-hover); }
 
 
-/* Responsividade */
+/* Responsividade (Ajustes menores podem ser necessários) */
 @media (max-width: 600px) {
-    .splash-logo { width: 100px; height: 100px; }
-    .splash-container h1 { font-size: 1.8em; }
-    .splash-container p { font-size: 1em; margin-bottom: 30px; }
-    #enter-chat-button { padding: 10px 30px; font-size: 1em; }
+    html, body { font-size: 14px; } /* Reduzir ainda mais em telas pequenas */
+    .splash-logo { width: 80px; height: 80px; }
+    .splash-container h1 { font-size: 1.6em; }
+    .splash-container p { font-size: 0.95em; margin-bottom: 25px; }
+    #enter-chat-button { padding: 9px 25px; font-size: 0.95em; }
 
-    .header-logo { width: 28px; height: 28px; }
-    .chat-log { padding: 15px; gap: 12px;}
-    .message { max-width: 85%; font-size: 0.9em; padding: 8px 12px;}
-    .chat-input-area { padding: 10px 15px; }
-    #user-input { padding: 8px 12px; font-size: 0.95em; }
-    #send-button { padding: 6px; }
-    #send-button svg { width: 20px; height: 20px; }
+    .chat-header { height: 40px; padding: 6px 12px;}
+    .header-logo { width: 24px; height: 24px; }
+    .chat-log { padding: 12px; gap: 8px;}
+    .message { max-width: 80%; font-size: 0.85em; padding: 7px 10px;}
+    .chat-input-area { padding: 8px 10px; min-height: 45px;}
+    #user-input { padding: 7px 10px; font-size: 0.9em; }
+    #send-button { width: 30px; height: 30px; padding: 5px;}
+    #send-button svg { width: 16px; height: 16px; }
 }
-  
