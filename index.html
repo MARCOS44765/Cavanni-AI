@@ -7,37 +7,35 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Usando Poppins para um visual um pouco diferente e moderno -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- == Etapa 1: Capa (Splash Screen) == -->
     <div id="splash-screen" class="splash-container">
-        <!-- Logo removido, Placeholder removido -->
-        <h1 class="splash-title">Cavanni</h1> <!-- Usando H1 para o nome principal -->
+        <h1 class="splash-title">Cavanni</h1>
+        <!-- ** FRASE RESTAURADA ABAIXO ** -->
+        <p class="splash-subtitle">Sua parceira de IA está pronta.</p>
         <button id="enter-chat-button">Iniciar</button>
     </div>
 
     <!-- == Etapa 2: Interface de Chat (Inicialmente Escondida) == -->
     <div id="chat-interface" class="chat-container">
         <header class="chat-header">
-            <!-- Cabeçalho agora minimalista, sem logo ou texto -->
-            <!-- Pode adicionar um título sutil se quiser depois -->
-            <!-- <span class="header-title">Cavanni</span> -->
+             <!-- ** NOME RESTAURADO NO CABEÇALHO ** -->
+            <span class="header-title">Cavanni</span>
         </header>
 
         <main class="chat-log" id="chat-log">
             <!-- Mensagem inicial da IA -->
              <div class="message ai-message">
-                <p>Online. Em que posso ajudar?</p> <!-- Mensagem um pouco diferente -->
+                <p>Online. Em que posso ajudar?</p>
             </div>
         </main>
 
         <footer class="chat-input-area">
             <textarea id="user-input" placeholder="Sua mensagem..." rows="1"></textarea>
             <button id="send-button" aria-label="Enviar Mensagem">
-                <!-- Ícone de Enviar SVG Mantido -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
                     <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
                 </svg>
