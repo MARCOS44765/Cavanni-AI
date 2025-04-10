@@ -1,17 +1,20 @@
-/* Variáveis de Cor (Mantido) */
+/* Variáveis de Cor e Estilo */
 :root {
-    --bg-main: #212121;
-    --bg-input: #3a3a3a; /* Um pouco mais claro que antes */
-    --bg-msg-ai: #3a3a3a; /* Mesmo do input */
-    --bg-msg-user: #004d40;
-    --text-primary: #e0e0e0;
-    --text-secondary: #bdbdbd;
-    --border-color: #5a5a5a; /* Um pouco mais claro */
-    --accent-color: #00bfa5;
-    --accent-hover: #008e76;
-    --splash-button-bg: var(--accent-color);
-    --splash-button-hover-bg: var(--accent-hover);
-    --splash-title-color: #ffffff; /* Cor do nome Cavanni */
+    --bg-main: #1e1e1e; /* Um cinza escuro um pouco mais suave */
+    --bg-input: #2d2d2d; /* Fundo do input */
+    --bg-msg-ai: #2d2d2d; /* Fundo msg IA */
+    --bg-msg-user: #005c4b; /* Verde escuro mais vibrante */
+    --text-primary: #f0f0f0; /* Branco levemente acinzentado */
+    --text-secondary: #a0a0a0; /* Cinza mais claro para placeholders */
+    --border-color: #4a4a4a; /* Borda sutil */
+    --accent-color: #00bf9a; /* Verde/ciano mais brilhante */
+    --accent-hover: #00a988; /* Hover do accent */
+    --splash-title-color: #ffffff;
+    --focus-glow-color: rgba(0, 191, 154, 0.5); /* Cor do brilho no foco */
+
+    --font-main: 'Poppins', sans-serif; /* Nova fonte */
+    --border-radius-msg: 16px; /* Raio de borda para mensagens */
+    --border-radius-input: 20px; /* Raio de borda para input */
 }
 
 * {
@@ -22,11 +25,13 @@
 
 html, body {
     height: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-main); /* Aplicando nova fonte */
     background-color: var(--bg-main);
     color: var(--text-primary);
     overflow: hidden;
-    font-size: 14.5px; /* Levemente menor ainda */
+    font-size: 14.5px;
+    -webkit-font-smoothing: antialiased; /* Melhora renderização da fonte */
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* --- Estilos da Capa (Splash Screen) --- */
@@ -37,120 +42,112 @@ html, body {
     justify-content: center;
     height: 100vh;
     text-align: center;
-    padding: 20px; /* Menor */
+    padding: 20px;
+    background: linear-gradient(135deg, #232323 0%, #1a1a1a 100%); /* Gradiente sutil no fundo */
 }
 
-.splash-logo {
-    width: 85px; /* Menor */
-    height: auto; /* Altura automática para manter proporção */
-    max-height: 85px;
-    margin-bottom: 15px; /* Menos espaço */
-}
-
-/* Estilo para o título "Cavanni" na capa */
+/* Título "Cavanni" na Capa */
 .splash-title {
-    font-size: 1.9em; /* Tamanho do nome */
+    font-size: 3.5em; /* Maior */
     font-weight: 700;
     color: var(--splash-title-color);
-    margin-bottom: 35px; /* Espaço antes do botão */
-    letter-spacing: 1px;
+    margin-bottom: 45px; /* Mais espaço */
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra no texto */
 }
 
 #enter-chat-button {
-    padding: 9px 28px; /* Menor */
-    font-size: 0.95em; /* Menor */
-    font-weight: 700;
+    padding: 10px 35px; /* Ajustado */
+    font-size: 1em; /* Ajustado */
+    font-weight: 600; /* Um pouco menos bold */
     color: #ffffff;
-    background-color: var(--splash-button-bg);
+    background-color: var(--accent-color);
     border: none;
-    border-radius: 18px;
+    border-radius: var(--border-radius-input); /* Mesmo raio do input */
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease; /* Transição mais suave */
+    box-shadow: 0 4px 15px rgba(0, 191, 154, 0.2); /* Sombra no botão */
 }
 #enter-chat-button:hover {
-    background-color: var(--splash-button-hover-bg);
-    transform: scale(1.03);
+    background-color: var(--accent-hover);
+    transform: translateY(-2px); /* Efeito de levantar no hover */
+    box-shadow: 0 6px 20px rgba(0, 191, 154, 0.3);
+}
+#enter-chat-button:active {
+     transform: translateY(0px); /* Efeito de pressionar */
+     box-shadow: 0 4px 15px rgba(0, 191, 154, 0.2);
 }
 
-.logo-placeholder {
-    display: none;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.6em;
-    color: var(--accent-primary);
-    margin-bottom: 15px;
-    padding: 10px 18px;
-    border: 1px solid var(--accent-primary);
-    border-radius: 6px;
-    opacity: 0.7;
-}
 
-/* --- Estilos da Interface de Chat (Inicialmente Escondida) --- */
+/* --- Estilos da Interface de Chat --- */
 .chat-container {
     display: none;
     flex-direction: column;
     height: 100%;
-    max-width: 780px; /* Mais estreito */
+    max-width: 760px; /* Pouco mais estreito */
     margin: 0 auto;
     background-color: var(--bg-main);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); /* Sombra sutil na caixa do chat */
 }
 
 .chat-header {
-    padding: 6px 15px; /* Menor */
+    padding: 0 15px; /* Sem padding vertical explícito */
     border-bottom: 1px solid var(--border-color);
-    background-color: #2f2f2f; /* Levemente diferente */
+    background-color: var(--bg-main); /* Mesmo fundo */
     display: flex;
     align-items: center;
-    height: 42px; /* Menor */
-    flex-shrink: 0; /* Não deixa encolher */
+    justify-content: center; /* Centraliza conteúdo (se houver) */
+    height: 40px; /* Mais baixo ainda */
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Sombra no header */
+    position: relative; /* Para z-index se necessário */
+    z-index: 10;
 }
-
-.header-logo {
-    width: 24px; /* Menor */
-    height: auto; /* Altura automática */
-    max-height: 24px;
-    /* margin-right: 0;  Removido pois é o único elemento */
-}
-
-.logo-placeholder-small {
-    display: none;
-    font-family: 'Courier New', Courier, monospace;
+/* Exemplo se quisesse adicionar título depois:
+.header-title {
     font-size: 0.9em;
-    color: var(--accent-primary);
-    padding: 3px 5px;
-    border: 1px solid var(--accent-primary);
-    border-radius: 3px;
-    opacity: 0.7;
+    font-weight: 600;
+    color: var(--text-secondary);
 }
+*/
 
 /* --- Estilos do Chat Log e Mensagens --- */
 .chat-log {
     flex-grow: 1;
     overflow-y: auto;
-    padding: 12px; /* Menor */
+    padding: 15px; /* Espaçamento interno */
     display: flex;
     flex-direction: column;
-    gap: 9px; /* Menor */
+    gap: 12px; /* Espaço entre mensagens */
 }
 
+/* Adicionando animação suave para novas mensagens */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 .message {
-    max-width: 68%; /* Menor */
-    padding: 7px 11px; /* Menor */
-    border-radius: 14px; /* Menor */
-    line-height: 1.4; /* Menor */
+    max-width: 70%;
+    padding: 9px 14px; /* Ajustado */
+    border-radius: var(--border-radius-msg);
+    line-height: 1.45;
     word-wrap: break-word;
-    font-size: 0.88em; /* Menor */
+    font-size: 0.9em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); /* Sombra sutil nas mensagens */
+    opacity: 0; /* Inicialmente invisível para animação */
+    animation: fadeIn 0.3s ease forwards; /* Aplica animação */
 }
 .message p { margin: 0; }
 .ai-message {
     background-color: var(--bg-msg-ai);
     color: var(--text-primary);
-    border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 6px; /* Cantinho menos redondo */
     align-self: flex-start;
 }
 .user-message {
     background-color: var(--bg-msg-user);
     color: #ffffff;
-    border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 6px; /* Cantinho menos redondo */
     align-self: flex-end;
 }
 
@@ -158,34 +155,43 @@ html, body {
 .chat-input-area {
     display: flex;
     align-items: center;
-    padding: 8px 10px; /* Menor */
+    padding: 10px 12px;
     border-top: 1px solid var(--border-color);
     background-color: var(--bg-main);
-    min-height: 46px; /* Menor */
-    flex-shrink: 0; /* Não deixa encolher */
+    min-height: 50px; /* Ajustado */
+    flex-shrink: 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra para cima */
 }
 #user-input {
     flex-grow: 1;
-    min-height: 19px; /* Menor */
-    max-height: 110px; /* Menor */
-    padding: 7px 12px; /* Menor */
-    border: none; /* Removida borda do input */
-    border-radius: 16px; /* Menor */
+    min-height: 20px;
+    max-height: 110px;
+    padding: 8px 15px; /* Mais padding horizontal */
+    border: 1px solid var(--border-color); /* Borda sutil de volta */
+    border-radius: var(--border-radius-input);
     background-color: var(--bg-input);
     color: var(--text-primary);
     font-family: inherit;
-    font-size: 0.92em; /* Menor */
+    font-size: 0.95em;
     resize: none;
     overflow-y: auto;
-    line-height: 1.4; /* Menor */
+    line-height: 1.45;
     outline: none;
     align-self: center;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Transição para foco */
 }
-#user-input::placeholder { color: var(--text-secondary); opacity: 0.8;}
+#user-input::placeholder { color: var(--text-secondary); opacity: 0.7;}
+
+/* Efeito de foco no input */
+#user-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--focus-glow-color); /* Brilho suave no foco */
+}
+
 #send-button {
     flex-shrink: 0;
-    margin-left: 7px; /* Menor */
-    padding: 5px; /* Menor */
+    margin-left: 8px;
+    padding: 0; /* Removido padding, tamanho controlado por width/height */
     background-color: var(--accent-color);
     border: none;
     border-radius: 50%;
@@ -193,31 +199,58 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s ease;
-    width: 30px; /* Menor */
-    height: 30px; /* Menor */
+    transition: all 0.2s ease;
+    width: 34px; /* Tamanho fixo */
+    height: 34px; /* Tamanho fixo */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 #send-button svg {
     fill: #ffffff;
-    width: 16px; /* Menor */
-    height: 16px; /* Menor */
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s ease; /* Animação do ícone */
 }
-#send-button:hover { background-color: var(--accent-hover); }
+#send-button:hover {
+    background-color: var(--accent-hover);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.25);
+}
+#send-button:hover svg {
+    transform: scale(1.1); /* Ícone aumenta um pouco */
+}
+#send-button:active {
+    transform: scale(0.95); /* Botão diminui ao clicar */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
 
 
-/* Responsividade (Ajustes adicionais se necessário) */
+/* Responsividade */
 @media (max-width: 600px) {
     html, body { font-size: 14px; }
-    .splash-logo { width: 75px; max-height: 75px;}
-    .splash-title { font-size: 1.7em; margin-bottom: 30px; }
-    #enter-chat-button { padding: 8px 25px; font-size: 0.9em; }
+    .splash-title { font-size: 2.8em; margin-bottom: 40px; }
+    #enter-chat-button { padding: 9px 30px; font-size: 0.95em; }
 
-    .chat-header { height: 40px; padding: 5px 12px;}
-    .header-logo { width: 22px; max-height: 22px;}
-    .chat-log { padding: 10px; gap: 8px;}
-    .message { max-width: 75%; font-size: 0.85em; padding: 6px 10px;}
-    .chat-input-area { padding: 7px 8px; min-height: 42px;}
-    #user-input { padding: 6px 10px; font-size: 0.9em; }
-    #send-button { width: 28px; height: 28px; padding: 4px; margin-left: 6px;}
-    #send-button svg { width: 15px; height: 15px; }
+    .chat-header { height: 38px; }
+    .chat-log { padding: 12px; gap: 10px;}
+    .message { max-width: 78%; font-size: 0.88em; padding: 8px 12px;}
+    .chat-input-area { padding: 8px 10px; min-height: 48px;}
+    #user-input { padding: 7px 12px; font-size: 0.92em; }
+    #send-button { width: 32px; height: 32px; margin-left: 7px;}
+    #send-button svg { width: 17px; height: 17px; }
+}
+
+/* Scrollbar customizado (Opcional, funciona melhor em Webkit/Blink) */
+.chat-log::-webkit-scrollbar {
+    width: 6px;
+}
+.chat-log::-webkit-scrollbar-track {
+    background: var(--bg-main);
+    border-radius: 3px;
+}
+.chat-log::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 3px;
+    border: 1px solid var(--bg-main);
+}
+.chat-log::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-secondary);
 }
