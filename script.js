@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
         enterChatButton.addEventListener('click', () => {
             splashScreen.style.display = 'none';
             chatInterface.style.display = 'flex';
-            userInput.focus();
+            // Pequeno timeout para garantir que o foco funcione após o display:flex
+            setTimeout(() => userInput.focus(), 50);
             // Mensagem inicial já está no HTML
         });
     } else {
@@ -34,10 +35,17 @@ document.addEventListener('DOMContentLoaded', function() {
             messageDiv.classList.add('ai-message');
         }
         const messageP = document.createElement('p');
-        messageP.textContent = text;
+        messageP.textContent = text; // Usar textContent previne XSS básico
         messageDiv.appendChild(messageP);
+
+        // Adiciona ao log antes de iniciar a animação de scroll
         chatLog.appendChild(messageDiv);
-        chatLog.scrollTop = chatLog.scrollHeight;
+
+        // Scroll suave para a nova mensagem
+        chatLog.scrollTo({
+            top: chatLog.scrollHeight,
+            behavior: 'smooth' // Scroll mais suave
+        });
     }
 
     function handleSendMessage() {
@@ -45,14 +53,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (messageText !== '') {
             addMessage('user', messageText);
             userInput.value = '';
-            userInput.style.height = 'auto';
+            userInput.style.height = 'auto'; // Reseta altura para recalcular
 
-             // !! BACKEND CALL POINT !!
+            // !! BACKEND CALL POINT !!
              setTimeout(() => {
-                 addMessage('ai', "Processando...");
+                 // Resposta FAKE/Placeholder:
+                 addMessage('ai', "Entendido. Processando sua solicitação..."); // Resposta fake um pouco melhor
              }, 800);
 
-            userInput.focus();
+             // Timeout pequeno para garantir que o foco retorne após eventos
+            setTimeout(() => userInput.focus(), 0);
         }
     }
 
@@ -67,10 +77,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 handleSendMessage();
             }
         });
+        // Ajustar altura do textarea dinamicamente
         userInput.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = (this.scrollHeight) + 'px';
-        });
+            this.style.height = 'auto'; // Reseta a altura para obter scrollHeight correto
+            // Define a nova altura, limitado pelo max-height do CSS
+            this.style.height = Math.min(this.scrollHeight, parseInt(window.getComputedStyle(this).maxHeight)) + 'px';
+        }, false);
     }
 
     // Código para Voz (comentado) - Manter como antes
